@@ -1,7 +1,7 @@
 # Amazon-Fresh-Plugin
 Estimate C02 emissions of items on Amazon Fresh
 
-Created plugin for project in Interaction Design, plugin estimates C02 emissions of items on amazon fresh based on type of food and weight. It also tells you estimate of cart total on cart page, and on checkout, displays more sustainable food options.
+Created plugin for project in design process, 2021, at Northeastern University. The plugin estimates C02 emissions of items on amazon fresh based on type of food and weight. It also tells you estimate of cart total on cart page, and on checkout, displays more sustainable food options.
 
 Note: This is setup to be run locally on my machine and I didn't want to get hosting for the site, so the link to the website doesn't exactly work, however, the website is published and the href can easily be changed to work properly.
 
