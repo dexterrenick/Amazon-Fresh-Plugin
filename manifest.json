@@ -1,7 +1,7 @@
 {
-    "name": "Amazon Fresh Plugin",
-    "description": "Estimate C02 emissions of items on Amazon Fresh.",
-    "version": "1",
+    "name": "Amazon Fresh Carbon Cost",
+    "description": "Estimate C02 emissions of items on the Amazon Fresh website.",
+    "version": "0.0.0.1",
     "manifest_version": 3,
     "author": "Dexter Renick",
     "icons": { "16": "logo.png",

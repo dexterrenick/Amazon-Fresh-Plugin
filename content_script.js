@@ -257,18 +257,16 @@ for (let button = 0; button < addToCartButtons.length-1; button++) {
 
 
 // Clone Carousel
-try {
-  const itemCarousels = document.querySelectorAll('.celwidget');
-  let carouselCopy = itemCarousels[1].cloneNode(true);
-  let title = carouselCopy.querySelectorAll('.a-carousel-heading.a-inline-block.a-text-bold')
-  let titleText = document.createElement("div");
-  title[0].outerText = 'Shop more sustainably';
-  itemCarousels[0].parentNode.insertBefore(carouselCopy, itemCarousels[0]);
-}
-catch (exception_var) {
-}
-
-
+// try {
+//   const itemCarousels = document.querySelectorAll('.celwidget');
+//   let carouselCopy = itemCarousels[1].cloneNode(true);
+//   let title = carouselCopy.querySelectorAll('.a-carousel-heading.a-inline-block.a-text-bold')
+//   let titleText = document.createElement("div");
+//   title[0].outerText = 'Shop more sustainably';
+//   itemCarousels[0].parentNode.insertBefore(carouselCopy, itemCarousels[0]);
+// }
+// catch (exception_var) {
+// }
 
 
 
@@ -283,25 +281,24 @@ for(let item = 0; item < cartItems.length-1; item++) {
 }
 
 
-// Clone Carousel
-// try {
-//   const cartTitle = document.querySelectorAll('.a-section.a-padding-small');
-//   console.log(cartTitle);
-//   let totalEmissionsText = document.createElement("div");
-//   let wr = document.createElement("div");
-//   wr.setAttribute("style", "display: flex");
-//   totalEmissionsText.append('Estimate of Cart Total Emissions: ');
-//   totalEmissionsText.append(totalEmissions);
-//
-//   let subscript = document.createElement("sub");
-//   subscript.append("2");
-//
-//   totalEmissionsText.append(`kg of CO`);
-//   totalEmissionsText.append(subscript);
-//   wr.append(totalEmissionsText);
-//
-//   totalEmissionsText.setAttribute("style", "font-size: 24px; font-weight: bold; padding-left: 40px; padding-top: 20px;")
-//   cartTitle[0].parentNode.insertBefore(wr, cartTitle[0]);
-// }
-// catch (exception_var) {
-// }
+try {
+  const cartTitle = document.querySelectorAll('.a-section.a-padding-small');
+  console.log(cartTitle);
+  let totalEmissionsText = document.createElement("div");
+  let wr = document.createElement("div");
+  wr.setAttribute("style", "display: flex");
+  totalEmissionsText.append('Estimate of Cart Total Emissions: ');
+  totalEmissionsText.append(Math.round(totalEmissions));
+
+  let subscript = document.createElement("sub");
+  subscript.append("2");
+
+  totalEmissionsText.append(`kg of CO`);
+  totalEmissionsText.append(subscript);
+  wr.append(totalEmissionsText);
+
+  totalEmissionsText.setAttribute("style", "font-size: 24px; font-weight: bold; padding-left: 40px; padding-top: 20px;")
+  cartTitle[0].parentNode.insertBefore(wr, cartTitle[0]);
+}
+catch (exception_var) {
+}
