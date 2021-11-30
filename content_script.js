@@ -1,8 +1,3 @@
-
-const items = document.querySelectorAll('.a-size-base.a-color-base.a-text-normal');
-const prices = document.querySelectorAll('.a-row.a-size-base.a-color-base');
-
-
 const fp = [
  {
    "food": "Beef (beef herd)",
@@ -137,6 +132,9 @@ const fp = [
   }
 ]
 
+const items = document.querySelectorAll('.a-size-base-plus.a-color-base.a-text-normal');
+const prices = document.querySelectorAll('.a-row.a-size-base.a-color-base');
+
 itemList = []
 priceList = []
 
@@ -212,17 +210,21 @@ function getWeight(foodTitle) {
 }
 
 function calculateEmissions(foodItem) {
-  for (let item in fp) {
-    let foodWords = fp[item]["food"].split(" ")
-    for (let word in foodWords) {
-      if (foodItem.toLowerCase().includes(foodWords[word].toLowerCase())) {
-        if (getWeight(foodItem) != 0) {
-          return Math.round(getWeight(foodItem) * parseFloat(fp[item]["emissions per kg"])*100)/100
+  try {
+    for (let item in fp) {
+      let foodWords = fp[item]["food"].split(" ");
+      for (let word in foodWords) {
+        if (foodItem.toLowerCase().includes(foodWords[word].toLowerCase())) {
+          if (getWeight(foodItem) != 0) {
+            return Math.round(getWeight(foodItem) * parseFloat(fp[item]["emissions per kg"])*100)/100
+          }
         }
       }
     }
+    return 'unknown';
+  } catch (e) {
+    return 'unknown';
   }
-  return 'unknown';
 }
 
 
@@ -233,7 +235,7 @@ for (let button = 0; button < addToCartButtons.length-1; button++) {
   wrapper.setAttribute('style', 'display: flex;');
   let newButton = document.createElement("a");
   newButton.setAttribute("style", "width: 90px; height: 30px; background: #fad813; border-radius: 10px; margin-left: 20px; margin-top: 4px; outline: 1px #D2B11E; text-decoration: none; align: right;")
-  newButton.setAttribute("href", "file:///Users/dexterrenick/Desktop/AmazonFreshPlugin/localsite/index.html")
+  newButton.setAttribute("href", "https://dexterrenick.com/amazonfreshplugin/index.html")
   // newButton.setAttribute("target", "_blank")
   // newButton.setAttribute("rel", "noopener noreferrer")
 
@@ -273,30 +275,29 @@ for(let item = 0; item < cartItems.length-1; item++) {
   let e = calculateEmissions(cartItems[item].firstChild.innerHTML);
   if (e != 'unknown') {
     totalEmissions += calculateEmissions(cartItems[item].firstChild.innerHTML);
-    console.log(totalEmissions);
   }
 }
 
 
 // Clone Carousel
-try {
-  const cartTitle = document.querySelectorAll('.a-section.a-padding-small');
-  console.log(cartTitle);
-  let totalEmissionsText = document.createElement("div");
-  let wr = document.createElement("div");
-  wr.setAttribute("style", "display: flex");
-  totalEmissionsText.append('Estimate of Cart Total Emissions: ');
-  totalEmissionsText.append(totalEmissions);
-
-  let subscript = document.createElement("sub");
-  subscript.append("2");
-
-  totalEmissionsText.append(`kg of CO`);
-  totalEmissionsText.append(subscript);
-  wr.append(totalEmissionsText);
-
-  totalEmissionsText.setAttribute("style", "font-size: 24px; font-weight: bold; padding-left: 40px; padding-top: 20px;")
-  cartTitle[0].parentNode.insertBefore(wr, cartTitle[0]);
-}
-catch (exception_var) {
-}
+// try {
+//   const cartTitle = document.querySelectorAll('.a-section.a-padding-small');
+//   console.log(cartTitle);
+//   let totalEmissionsText = document.createElement("div");
+//   let wr = document.createElement("div");
+//   wr.setAttribute("style", "display: flex");
+//   totalEmissionsText.append('Estimate of Cart Total Emissions: ');
+//   totalEmissionsText.append(totalEmissions);
+//
+//   let subscript = document.createElement("sub");
+//   subscript.append("2");
+//
+//   totalEmissionsText.append(`kg of CO`);
+//   totalEmissionsText.append(subscript);
+//   wr.append(totalEmissionsText);
+//
+//   totalEmissionsText.setAttribute("style", "font-size: 24px; font-weight: bold; padding-left: 40px; padding-top: 20px;")
+//   cartTitle[0].parentNode.insertBefore(wr, cartTitle[0]);
+// }
+// catch (exception_var) {
+// }
